@@ -24,3 +24,5 @@ const parseArgs = schema => (req, res, next) => {
     )
   }
 }
+
+module.exports = parseArgs

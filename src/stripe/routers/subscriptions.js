@@ -6,15 +6,15 @@ const parseArgs = require('../../utils/parse-args')
 const createStripeService = require('stripe')
 
 // define the schemas
-const createSubscriptionSchema = Joi.object().keys({
-  customer: Joi.string().isRequired(),
-  items: Joi.array()
-    .items(planItemSchema)
-    .isRequired()
+const planItemSchema = Joi.object().keys({
+  plan: Joi.string().required()
 })
 
-const planItemSchema = Joi.object().keys({
-  plan: Joi.string().isRequired()
+const createSubscriptionSchema = Joi.object().keys({
+  customer: Joi.string().required(),
+  items: Joi.array()
+    .items(planItemSchema)
+    .required()
 })
 
 const createSubscriptionsRouter = stripeSecret => {
@@ -31,4 +31,4 @@ const createSubscriptionsRouter = stripeSecret => {
   return router
 }
 
-module.exports = createCustomersRouter
+module.exports = createSubscriptionsRouter

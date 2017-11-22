@@ -7,13 +7,13 @@ const createStripeService = require('stripe')
 
 // define the schemas
 const createCustomerSchema = Joi.object().keys({
-  email: Joi.string(),
+  email: Joi.string().required(),
   description: Joi.string(),
   source: Joi.string()
 })
 
 const updateCustomerSchema = Joi.object().keys({
-  id: Joi.string().isRequired(),
+  id: Joi.string().required(),
   email: Joi.string(),
   description: Joi.string(),
   source: Joi.string()
